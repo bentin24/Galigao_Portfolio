@@ -1,38 +1,93 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: pink; /* Sets background color */
+}
+
+/* Fixed Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: pink;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: flex-end; /* Align menu to the right */
+    gap: 15px;
+    padding: 10px;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    font-size: x-large;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: white;
+}
+
+/* Homepage Layout */
 .homepage {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 50px;
-}
-
-.left-side {
-    flex: 1;
-    text-align: center;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.right-side {
-    flex: 1;
-    text-align: left;
-}
-
-/* Ensure sections use full space */
-content {
-    width: 100%;
-    min-height: 100vh; /* Makes sections take full height */
-    display: flex;
+    flex-direction: column; /* Centers content vertically */
     align-items: center;
     justify-content: center;
-    text-align: center;
+    min-height: 100vh; /* Ensures full-screen height */
 }
 
-/* Restore wave animation */
+/* Profile Picture */
+.profile-pic {
+    width: 250px; /* Increased size */
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Text Styling */
+.hi, .static-text {
+    font-size: 3.5em; /* Increased text size */
+    font-weight: bold;
+    color: #333;
+}
+
+.name {
+    font-size: 5em; /* Enlarged name */
+    font-weight: bold;
+    color: white; /* Stands out on pink background */
+    opacity: 0;
+    animation: fadeInName 4s forwards; /* Appears smoothly */
+}
+
+.description {
+    font-size: 2em; /* Bigger description text */
+    color: white;
+}
+
+/* Name Animation */
+@keyframes fadeInName {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Wave Hand Animation */
 .wave {
     display: inline-block;
     animation: wave 1.2s infinite alternate;
@@ -43,17 +98,165 @@ content {
     to { transform: rotate(20deg); }
 }
 
-/* Name appears slowly once */
-.name {
+/* About Section */
+.about-page {
+    display: flex;
+    flex-direction: column; /* Keeps "What I Do" & "Skills" stacked */
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+/* What I Do & Skills Section */
+.skills-section {
+    background: #FFD3B6;
+    padding: 30px;
+    border: 4px solid pink;
+    text-align: center;
+    display: inline-block;
+    width: 90%;
+}
+
+.skills-section h2 {
     font-size: 3em;
     font-weight: bold;
+    border-bottom: 4px solid pink;
+    padding-bottom: 10px;
+}
+
+.skills-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-section li {
+    display: inline-block;
+    padding: 15px;
+    background: white;
     color: pink;
-    opacity: 0;
-    animation: fadeInName 4s forwards; /* Runs only once */
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
-@keyframes fadeInName {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
+
+/* Contact Page Layout */
+.contact-page {
+    display: flex;
+    justify-content: space-between; /* Positions left & right properly */
+    align-items: center;
+    padding: 50px;
+    gap: 40px; /* Adds spacing between sections */
 }
 
+/* Left Side (Contact Info) */
+.left_side {
+    flex: 1;
+    text-align: left; /* Aligns text to the left */
+}
+
+.left_side h1 {
+    font-size: 3em; /* Enlarges heading */
+    color: white;
+}
+
+.contact-info p {
+    font-size: 1.5em;
+    color: white;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Right Side (Form Section) */
+.right_side {
+    flex: 1;
+    text-align: right; /* Aligns form to the right */
+}
+
+.right_side h2 {
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+}
+
+/* Contact Form */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    width: 80%;
+    margin-left: auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid pink;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+textarea {
+    height: 150px;
+}
+
+/* Send Message Button */
+.btn {
+    width: 100%;
+    background-color: pink;
+    color: white;
+    padding: 15px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #ff85a2;
+}
+
+.projects-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    flex-direction: column; /* Stack tech logos & project card */
+}
+
+.tech-icons {
+    display: flex;
+    justify-content: center; /* Centers logos */
+    gap: 15px;
+    margin-bottom: 20px; /* Adds space before project card */
+}
+
+.tech-logo {
+    width: 50px; /* Adjust size */
+}
+
+.project-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.project-img {
+    width: 100%;
+    border-radius: 10px;
+}
