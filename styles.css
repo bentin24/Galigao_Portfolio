@@ -1,0 +1,59 @@
+.homepage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.left-side {
+    flex: 1;
+    text-align: center;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.right-side {
+    flex: 1;
+    text-align: left;
+}
+
+/* Ensure sections use full space */
+content {
+    width: 100%;
+    min-height: 100vh; /* Makes sections take full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Restore wave animation */
+.wave {
+    display: inline-block;
+    animation: wave 1.2s infinite alternate;
+}
+
+@keyframes wave {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(20deg); }
+}
+
+/* Name appears slowly once */
+.name {
+    font-size: 3em;
+    font-weight: bold;
+    color: pink;
+    opacity: 0;
+    animation: fadeInName 4s forwards; /* Runs only once */
+}
+
+@keyframes fadeInName {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
