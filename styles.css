@@ -72,20 +72,24 @@ body {
     font-size: 5em; /* Enlarged name */
     font-weight: bold;
     color: white; /* Stands out on pink background */
-    opacity: 0;
-    animation: fadeInName 4s forwards; /* Appears smoothly */
+    opacity: 0; /* Starts hidden */
+    animation: fadeInOut 4s ease-in-out infinite; /* Repeats indefinitely */
 }
+
+/* Fade In & Out Animation */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
 
 .description {
     font-size: 2em; /* Bigger description text */
     color: white;
 }
 
-/* Name Animation */
-@keyframes fadeInName {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
 
 /* Wave Hand Animation */
 .wave {

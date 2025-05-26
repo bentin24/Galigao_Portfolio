@@ -64,7 +64,10 @@
 
         <!-- Project Card Below -->
         <div class="project-card">
-            <img src="project-image.jpg" alt="Project Preview" class="project-img">
+            <p class="caption">My First Project That I Created</p>
+            <img src="image1.png" alt="Project Preview" class="project-img">
+            <img src="image2.png" alt="Project Preview" class="project-img">
+            <img src="image3.png" alt="Project Preview" class="project-img">
         </div>
     </div>
 </section>
@@ -79,9 +82,9 @@
                         love to hear from you!</p>
 
                     <div class="contact-info">
-                        <p>📧 <strong>Email:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a>
+                        <p>📧 <strong>Email:</strong> <a href="mailto:your-email@example.com">4391angelica@gmail.com</a>
                         </p>
-                        <p>📞 <strong>Phone:</strong> +63 900 123 4567</p>
+                        <p>📞 <strong>Phone:</strong> +63 959475121</p>
                     </div>
                 </div>
 
