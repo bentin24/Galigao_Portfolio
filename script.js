@@ -6,3 +6,12 @@ document.querySelectorAll('.navbar a').forEach(anchor => {
         });
     });
 });
+
+let index = 0;
+const images = document.querySelectorAll(".project-img");
+
+function changeImage(direction) {
+    images[index].style.display = "none"; // Hide current image
+    index = (index + direction + images.length) % images.length; // Navigate images
+    images[index].style.display = "block"; // Show new image
+}

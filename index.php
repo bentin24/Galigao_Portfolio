@@ -1,3 +1,34 @@
+<?php
+// Database connection
+$conn = new mysqli("localhost", "root", "", "portfolio_db"); // Adjust database details
+
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
+
+$successMessage = ""; // Variable to store success message
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST["name"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $message = htmlspecialchars($_POST["message"]);
+
+    // Store message in the database
+    $stmt = $conn->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $name, $email, $message);
+
+    if ($stmt->execute()) {
+        $successMessage = "Message sent successfully! 🎉"; // Set success message
+    } else {
+        $successMessage = "Oops! Something went wrong. 😞"; // Error message
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,53 +84,61 @@
             </div>
         </section>
 
-       <section id="projects">
-    <div class="projects-container">
-        <!-- Tech Logos at the Top -->
-        <div class="tech-icons">
-            <img src="html5_logo.png" alt="HTML" class="tech-logo">
-            <img src="css3_logo.png" alt="CSS" class="tech-logo">
-            <img src="javascript_logo.png" alt="JavaScript" class="tech-logo">
+        <section id="projects">
+            <h2 class="project-title">My Project</h2> <!-- Title at the top -->
+
+            <div class="projects-container">
+                <button class="prev-btn" onclick="changeImage(-1)">&#10094;</button> <!-- Left Arrow -->
+
+                <div class="project-card">
+                    <img src="image1.png" alt="Project Preview" class="project-img">
+                    <img src="image2.png" alt="Project Preview" class="project-img">
+                    <img src="image3.png" alt="Project Preview" class="project-img">
+                </div>
+
+                <button class="next-btn" onclick="changeImage(1)">&#10095;</button> <!-- Right Arrow -->
+            </div>
+        </section>
+
+
+
+        <section id="contact">
+    <div class="contact-page">
+        <div class="left_side">
+            <h1>Get in Touch</h1>
+            <p>Whether you have a project idea, need assistance with UI/UX design, or just want to connect—I’d love to hear from you!</p>
+
+            <div class="contact-info">
+                <p>📧 <strong>Email:</strong> <a href="mailto:4391angelica@gmail.com">4391angelica@gmail.com</a></p>
+                <p>📞 <strong>Phone:</strong> +63 959475121</p>
+            </div>
         </div>
 
-        <!-- Project Card Below -->
-        <div class="project-card">
-            <p class="caption">My First Project That I Created</p>
-            <img src="image1.png" alt="Project Preview" class="project-img">
-            <img src="image2.png" alt="Project Preview" class="project-img">
-            <img src="image3.png" alt="Project Preview" class="project-img">
+        <div class="right_side">
+            <!-- Success Message Display Above the Form -->
+            <?php if (!empty($successMessage)) : ?>
+                <div id="success-message" style="
+                    background-color: lightgreen; 
+                    color: white; 
+                    padding: 10px; 
+                    margin-bottom: 15px; 
+                    text-align: center; 
+                    font-size: 1.5em;">
+                    <?php echo $successMessage; ?>
+                </div>
+            <?php endif; ?>
+
+            <h2>Send a Message</h2>
+            <form action="index.php" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
         </div>
     </div>
 </section>
 
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="contact-page">
-                <div class="left_side">
-                    <h1>Get in Touch</h1>
-                    <p>Whether you have a project idea, need assistance with UI/UX design, or just want to connect—I’d
-                        love to hear from you!</p>
-
-                    <div class="contact-info">
-                        <p>📧 <strong>Email:</strong> <a href="mailto:your-email@example.com">4391angelica@gmail.com</a>
-                        </p>
-                        <p>📞 <strong>Phone:</strong> +63 959475121</p>
-                    </div>
-                </div>
-
-                <div class="right_side">
-                    <h2>Send a Message</h2>
-                    <form action="send_message.php" method="POST">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <textarea name="message" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn">Send Message</button> <!-- Added button -->
-                    </form>
-
-                </div>
-            </div>
-        </section>
     </div>
 
     <script src="script.js"></script>
